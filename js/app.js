@@ -64,6 +64,11 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Player.prototype.resetPlayerPosition = function() {
+    this.x = playerInitialX;
+    this.y = playerInitialY;
+    this.resetCheckPosition();
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
