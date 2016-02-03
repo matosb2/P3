@@ -38,21 +38,21 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Enemy.prototype.randomSpeed = function () {
+Enemy.prototype.randomSpeed = function() {
     var speedMultiply = Math.floor(Math.random() * 5 + 1);
     this.speed = 75 * speedMultiply;
-}
+};
+
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-
+var playerInitialX = 200,
+    playerInitialY = 400;
 //*Create player class
-var Player = function () {
-    var playerInitialX = 200,
-        playerInitialY = 400;
+var Player = function() {
     this.x = playerInitialX;
     this.y = playerInitialY;
-    this.sprite = 'images/char-boy.png'
+    this.sprite = 'images/char-boy.png';
 };
 
 
@@ -64,7 +64,7 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.resetPlayerPosition = function() {
+Player.prototype.resetPlayerPosition = function(playerinitialX, playerinitialY) {
     this.x = playerInitialX;
     this.y = playerInitialY;
     this.resetCheckPosition();
@@ -75,7 +75,7 @@ Player.prototype.handleInput = function(keyPressed) {
         stepVerticalLength = 90;
     this.CheckPosition();
 
-    if (keyPressed) === 'left' {
+    if (keyPressed === 'left') {
         if (this.wallChecker.leftWall) {
             return null;
         }
@@ -109,6 +109,28 @@ Player.prototype.handleInput = function(keyPressed) {
         return null;
     }
 };
+
+Player.prototype.CheckPosition = function() {
+    if (this.x === 0) {
+        this.setHorizontalWallCheckerState(true, false);
+    } else if (this.x === 400) {
+        this.setHorizontalWallCheckerState(false, true);
+    } else {
+        this.setHorizontalWallCheckerState(false, false);
+    }
+
+    if (this.y === 400) {
+        this.wallChecker.bottomWall = true;
+    } else {
+        this.wallChecker.bottomWall = false;
+    }
+};
+
+Player.prototype.setHorizontalWallCheckerState = function(leftWallState, rightWallState) {
+    this.wallChecker.leftWall = leftWallState;
+    this.wallChecker.rightWall = rightWallState;
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -118,7 +140,7 @@ var allEnemies = [];
 for (var i = 0; i < 3; i++) {
     var tempSpeed = Math.floor(Math.random() * 5 + 1) * 75;
     allEnemies.push(new Enemy(-60, 60 + 85 * i, tempSpeed));
-};
+}
 
 var player = new Player();
 
@@ -134,5 +156,5 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    //player.handleInput(allowedKeys[e.keyCode]);
+    player.handleInput(allowedKeys[e.keyCode]);
 });
