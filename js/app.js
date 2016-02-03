@@ -47,9 +47,9 @@ Enemy.prototype.randomSpeed = function () {
 // a handleInput() method.
 
 //*Create player class
-var Player = function (playerInitialX, playerInitialY) {
-    playerInitialX = 200;
-    playerInitialY = 400;
+var Player = function () {
+    var playerInitialX = 200,
+        playerInitialY = 400;
     this.x = playerInitialX;
     this.y = playerInitialY;
     this.sprite = 'images/char-boy.png'
@@ -68,7 +68,47 @@ Player.prototype.resetPlayerPosition = function() {
     this.x = playerInitialX;
     this.y = playerInitialY;
     this.resetCheckPosition();
-}
+};
+
+Player.prototype.handleInput = function(keyPressed) {
+    var stepHorizontalLength = 100,
+        stepVerticalLength = 90;
+    this.CheckPosition();
+
+    if (keyPressed) === 'left' {
+        if (this.wallChecker.leftWall) {
+            return null;
+        }
+
+        this.x -= stepHorizontalLength;
+
+    } else if (keyPressed === 'right') {
+        if (this.wallChecker.rightWall) {
+            return null;
+        }
+
+        this.x += stepHorizontalLength;
+
+    } else if (keyPressed === 'up') {
+        if (this.y === 40) {
+            this.resetPlayerPosition();
+            return null;
+        }
+
+        this.y -= stepVerticalLength;
+
+    } else if (keyPressed === 'down') {
+        if (this.wallChecker.bottomWall) {
+            return null;
+        }
+
+        this.y += stepVerticalLength;
+
+    } else {
+        console.log('>>> WRONG KEY PRESSED <<<');
+        return null;
+    }
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
