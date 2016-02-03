@@ -52,6 +52,11 @@ var playerInitialX = 200,
 var Player = function() {
     this.x = playerInitialX;
     this.y = playerInitialY;
+    this.wallChecker = {
+        leftWall: false,
+        rightWall: false,
+        bottomWall: true
+    };
     this.sprite = 'images/char-boy.png';
 };
 
@@ -125,6 +130,11 @@ Player.prototype.CheckPosition = function() {
         this.wallChecker.bottomWall = false;
     }
 };
+
+Player.prototype.resetCheckPosition = function () {
+    this.setHorizontalWallCheckerState(false, false);
+    this.wallChecker.bottomWall = true;
+}
 
 Player.prototype.setHorizontalWallCheckerState = function(leftWallState, rightWallState) {
     this.wallChecker.leftWall = leftWallState;
