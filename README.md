@@ -1,6 +1,18 @@
-frontend-nanodegree-arcade-game
-===============================
+# Project 3 - Arcade Game
 
-Students should use this [rubric](https://www.udacity.com/course/viewer/#!/c-nd001/l-2696458597/m-2687128535) for self-checking their submission.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Install
+1. First download [game](https://github.com/matosb2/P3-Arcade-Game/archive/master.zip)
+2. Next unzip the contents onto your Desktop or somewhere easily accessible
+3. Then open the folder P3-Arcade-Game-master
+4. Open up the file named index.html with your browser or Google Chrome
+5. TA DA!! Game should be up and running
+
+## How to Play
+#### 1. Controls:
+  - Up, Down, Left, Right keys
+#### 2. Goal:
+  - You want to reach the water without touching any bugs or you will have
+to start from the beginning.
+
+
