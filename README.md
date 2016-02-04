@@ -13,8 +13,9 @@
 
 #### 1. Controls:
   - Up, Down, Left, Right keys
+
 #### 2. Goal:
-  - You want to reach the water without touching any bugs or you will have
+  - You want to reach the water without touching any bugs or you will have 
 to start from the beginning.
 
 
