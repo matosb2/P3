@@ -76,8 +76,7 @@ var Player = function() {
 //Player's update method uses dt as a parameter just like 
 //enemy's update method so everything can run at same speed
 //across all systems running the game
-Player.prototype.update = function(dt) {
-};
+Player.prototype.update = function(dt) {};
 
 //Player's image is rendered on canvas at it's
 //x and y location mentioned above
@@ -112,8 +111,8 @@ Player.prototype.handleInput = function(keyPressed) {
 
         this.x -= stepHorizontalLength;
 
-    //When right key is pressed move right 100
-    //on x axis of canvas until wall reached
+        //When right key is pressed move right 100
+        //on x axis of canvas until wall reached
     } else if (keyPressed === 'right') {
         if (this.wallChecker.rightWall) {
             return null;
@@ -121,10 +120,10 @@ Player.prototype.handleInput = function(keyPressed) {
 
         this.x += stepHorizontalLength;
 
-    //When up key is pressed move up 90
-    //on y axis of canvas until you reach 40
-    //on y axis and then reset player position
-    //(Thats how you beat the game)
+        //When up key is pressed move up 90
+        //on y axis of canvas until you reach 40
+        //on y axis and then reset player position
+        //(Thats how you beat the game)
     } else if (keyPressed === 'up') {
         if (this.y === 40) {
             this.resetPlayerPosition();
@@ -133,8 +132,8 @@ Player.prototype.handleInput = function(keyPressed) {
 
         this.y -= stepVerticalLength;
 
-    //When down key is pressed move down 90
-    //on y axis of canvas until you reach a wall
+        //When down key is pressed move down 90
+        //on y axis of canvas until you reach a wall
     } else if (keyPressed === 'down') {
         if (this.wallChecker.bottomWall) {
             return null;
@@ -142,8 +141,8 @@ Player.prototype.handleInput = function(keyPressed) {
 
         this.y += stepVerticalLength;
 
-    //if any other key but up, down, left, right
-    //are pushed return this message on console
+        //if any other key but up, down, left, right
+        //are pushed return this message on console
     } else {
         console.log('>>> WRONG KEY PRESSED <<<');
         return null;
